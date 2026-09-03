@@ -15,7 +15,7 @@ código.
 
 | Tramo | Minutos | Contenido |
 |---|---|---|
-| Teoría/encuadre | 20 | Repaso rápido de la semana + presentación del reto y las restricciones |
+| Encuadre | 20 | Presentación del reto y las restricciones |
 | Reto práctico | 75 | Diseñar e implementar el carrito de compras |
 | Resolución individual | 15 | Terminar / pulir la solución por cuenta propia |
 | Tarea | 10 | Preparar la explicación del código (se presenta la próxima sesión) |
