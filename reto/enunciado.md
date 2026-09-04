@@ -74,8 +74,7 @@ los decides tú, pero el comportamiento pedido es:
 
 Las restricciones de arriba son las únicas reglas fijas. Todo lo demás es libre — de
 hecho, se espera que eches mano de otras herramientas que ya viste esta semana donde
-tengan sentido: **Streams** para recorrer/sumar/transformar colecciones, **`Optional`**
-para modelar ausencia sin `null`, genéricos, etc. No hay una "forma correcta" única de
+tengan sentido: **Streams** para recorrer/sumar/transformar colecciones, etc. No hay una "forma correcta" única de
 resolver el reto por dentro, mientras respetes las restricciones y la rúbrica.
 
 ## Punto de partida
