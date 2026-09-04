@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Holds products and their quantities. Adding the same product twice must increase
  * its quantity — not create a second, separate entry.
@@ -19,6 +23,34 @@ package org.example;
  *     (polimorfismo) — nada de instanceof / type checks en Cart
  */
 public class Cart {
-
     // TODO: implementar
+    private final Map<Product, Integer> items = new HashMap<>();
+
+    public void addProduct(Product product, int quantity) throws InvalidQuantityException, InsufficientStockException {
+        if (quantity <= 0) {
+            throw new InvalidQuantityException("Quantity must be greater than zero");
+        }
+        int currentQuantity = items.getOrDefault(product, 0);
+        if (currentQuantity + quantity > product.getStock()) {
+            throw new InsufficientStockException("Not enough stock available");
+        }
+        items.put(product, currentQuantity + quantity);
+    }
+
+    public double total() {
+        return items .entrySet().stream()
+                .mapToDouble(entry -> {
+                    Product product = entry.getKey();
+                    int quantity = entry.getValue();
+                    double subtotal = product.getUnitprice() * quantity;
+                    double tax = subtotal * product.taxRate();
+                    double shipping = product.shippingCost(quantity);
+                    return subtotal + tax + shipping;
+                })
+                .sum();
+    }
+
+    public Map<Product, Integer> getItems() {
+        return Collections.unmodifiableMap(items);
+    }
 }
