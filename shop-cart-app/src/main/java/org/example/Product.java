@@ -12,6 +12,47 @@ package org.example;
  * acumular las cantidades correctamente para el mismo producto.
  */
 public abstract class Product {
+    private final String sku;
+    private final String nombre;
+    private final double precioUnitario;
+    private final int stockDisponible;
+
+    public Product(final String sku, final String nombre, final int stock_disponible, final double precio_unitario) {
+        this.sku = sku;
+        this.nombre = nombre;
+        this.stockDisponible = stockDisponible;
+        this.precioUnitario = precioUnitario;
+    }
+
+    public Product(final String nombre) {
+        if (nombre == null || nombre.trim().length() == 0) {
+            this.nombre = "";
+        } else {
+            this.nombre = nombre.trim();
+        }
+    }
+
+    public Product(final double precioUnitario){
+        if(precioUnitario > 0) {
+            this.precioUnitario = precioUnitario;
+        }else{
+            System.out.println("Solo precio positivo");
+        }
+    }
+
+    public String getSku() {
+        return sku;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public int getStockDisponible() {
+        return stock_disponible;
+    }
+
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }
 
     /**
      * Shipping cost for buying {@code quantity} units of this product.
