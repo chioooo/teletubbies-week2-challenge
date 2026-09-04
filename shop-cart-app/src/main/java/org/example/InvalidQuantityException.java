@@ -7,6 +7,7 @@ package org.example;
  * TODO: agrega constructor(es) con un mensaje útil.
  */
 public class InvalidQuantityException extends RuntimeException {
-
-    // TODO: implementar
+    public InvalidQuantityException(String message) {
+        super(message);
+    }
 }
