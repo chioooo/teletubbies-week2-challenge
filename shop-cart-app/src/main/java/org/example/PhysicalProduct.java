@@ -8,4 +8,21 @@ package org.example;
 public class PhysicalProduct extends Product {
 
     // TODO: implementar
+    private static final double TAX_RATE = 0.16;
+    private static final double SHIPPING_PER_UNIT = 2.50;
+
+    public PhysicalProduct(String sku, String name, double price, int stock) {
+        super(sku, name, price, stock);
+    }
+
+    @Override
+    public double taxRate() {
+        return TAX_RATE;
+    }
+
+    @Override
+    public double shippingCost(int quantity) {
+        return SHIPPING_PER_UNIT * quantity;
+    }
+
 }
