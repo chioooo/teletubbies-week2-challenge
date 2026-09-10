@@ -18,11 +18,6 @@ public abstract class Product {
     private  int stock;
 
     public Product(String sku, String name, double unitPrice, int stock) {
-        this.sku = sku;
-        this.name = name;
-        this.unitPrice = unitPrice;
-        this.stock = stock;
-
 
         if (sku == null || sku.isBlank()) {
             throw new IllegalArgumentException("SKU no puede ser nulo o vacío");
@@ -36,6 +31,10 @@ public abstract class Product {
         if (stock < 0) {
             throw new IllegalArgumentException("El stock no puede ser negativo");
         }
+        this.sku = sku;
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.stock = stock;
 
     }
 
