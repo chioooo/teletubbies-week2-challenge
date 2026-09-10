@@ -7,7 +7,7 @@ package org.example;
  * TODO: implementa el constructor y los dos métodos abstractos de {@link Product}.
  */
 public class DigitalProduct extends Product {
-
+    private static final double TAX_RATE = 0.16;
     public DigitalProduct(String sku,String name, double unitPrice,int stock) {
         super(sku, name, unitPrice, stock);
     }
@@ -18,7 +18,7 @@ public class DigitalProduct extends Product {
 
     @Override
     public double taxRate() {
-        return 0.16;
+        return TAX_RATE;
     }
 
 

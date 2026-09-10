@@ -24,10 +24,10 @@ public abstract class Product {
         this.stock = stock;
 
 
-        if (sku == null || sku.isEmpty()) {
+        if (sku == null || sku.isBlank()) {
             throw new IllegalArgumentException("SKU no puede ser nulo o vacío");
         }
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("El nombre no puede ser nulo o vacío");
         }
         if (unitPrice < 0) {
@@ -54,6 +54,19 @@ public abstract class Product {
      * Shipping cost for buying {@code quantity} units of this product.
      * Implement per subclass — no instanceof/type checks here or at call sites.
      */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+        return sku.equals(product.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return sku.hashCode();
+    }
+
     public abstract double shippingCost(int quantity);
 
     /**
