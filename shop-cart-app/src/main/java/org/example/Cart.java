@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Holds products and their quantities. Adding the same product twice must increase
  * its quantity — not create a second, separate entry.
@@ -19,6 +22,54 @@ package org.example;
  *     (polimorfismo) — nada de instanceof / type checks en Cart
  */
 public class Cart {
+    private Map<Product, Integer> products = new HashMap<>();
+    public void addProduct(Product product, int quantity) {
+        if (quantity <= 0) {
+            throw new InvalidQuantityException("La cantidad debe ser mayor a cero");
+        }
+       if(products.containsKey(product)) {
+            int currentQuantity = products.get(product);
+            if (currentQuantity + quantity > product.getStock()) {
+                throw new InsufficientStockException(
+                        product.getName(),
+                        currentQuantity+quantity,
+                        product.getStock()
+                );
+            }
+            products.put(product, currentQuantity + quantity);
+        } else {
+            if (quantity > product.getStock()) {
+                throw new InsufficientStockException(
+                        product.getName(),
+                        quantity,
+                        product.getStock()
+                );
+            }
+            products.put(product, quantity);
+        }
+
+
+
+
+    }
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+
+    public double total() {
+        double total = 0;
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+
+            double subtotal = product.getUnitPrice() * quantity;
+            double tax =subtotal * product.taxRate();
+            double shipping = product.shippingCost(quantity);
+
+            total += subtotal + tax + shipping;
+        }
+        return total;
+    }
 
     // TODO: implementar
 }

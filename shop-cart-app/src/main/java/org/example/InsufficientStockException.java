@@ -8,6 +8,11 @@ package org.example;
  * cuántos hay disponibles).
  */
 public class InsufficientStockException extends RuntimeException {
+    public InsufficientStockException(String product, int requested, int available) {
+        super("Stock insuficiente para el producto '" + product + ".Se solicitaron " + requested + "unidades, pero solo hay " + available+ " disponibles.");
+    }
+
+
 
     // TODO: implementar
 }
