@@ -49,8 +49,27 @@ public class Cart {
         }
 
 
+
+
+    }
+    public Map<Product, Integer> getProducts() {
+        return products;
     }
 
+    public double total() {
+        double total = 0;
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+
+            double subtotal = product.getUnitPrice() * quantity;
+            double tax =subtotal * product.taxRate();
+            double shipping = product.shippingCost(quantity);
+
+            total += subtotal + tax + shipping;
+        }
+        return total;
+    }
 
     // TODO: implementar
 }

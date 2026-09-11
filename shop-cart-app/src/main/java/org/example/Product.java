@@ -13,9 +13,9 @@ package org.example;
  */
 public abstract class Product {
     private String sku;
-    private  String name;
-    private  double unitPrice;
-    private  int stock;
+    private String name;
+    private double unitPrice;
+    private int stock;
 
     public Product(String sku, String name, double unitPrice, int stock) {
 
