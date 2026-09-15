@@ -10,4 +10,7 @@ package org.example;
 public class InsufficientStockException extends RuntimeException {
 
     // TODO: implementar
+    public InsufficientStockException(String message) {
+        super(message);
+    }
 }

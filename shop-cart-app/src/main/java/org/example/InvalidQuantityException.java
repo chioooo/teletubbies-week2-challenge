@@ -9,4 +9,8 @@ package org.example;
 public class InvalidQuantityException extends RuntimeException {
 
     // TODO: implementar
+
+    public InvalidQuantityException(String message) {
+        super(message);
+    }
 }
