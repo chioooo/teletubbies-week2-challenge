@@ -36,6 +36,7 @@ class CartTest {
         Product product = new PhysicalProduct("SKU123", "Physical Product", 100.0, 10);
         assertThrows(InvalidQuantityException.class, () -> {
             cart.addProduct(product, 0);
+            cart.addProduct(product, -1);
         });
     }
 
@@ -47,10 +48,14 @@ class CartTest {
         Cart cart = new Cart();
         Product physicalProduct = new PhysicalProduct("SKU123", "Physical Product", 100.0, 10);
         Product digitalProduct = new DigitalProduct("SKU456", "Digital Product", 100.0, 10);
-        cart.addProduct(physicalProduct, 1);
-        cart.addProduct(digitalProduct, 1);
-        double physicalTotal = cart.total();
-        double digitalTotal = cart.total();
+        Cart physicalCart = new Cart();
+        physicalCart.addProduct(physicalProduct, 1);
+        double physicalTotal = physicalCart.total();
+
+        Cart digitalCart = new Cart();
+        digitalCart.addProduct(digitalProduct, 1);
+        double digitalTotal = digitalCart.total();
+
         assertNotEquals(physicalTotal, digitalTotal);
     }
 }

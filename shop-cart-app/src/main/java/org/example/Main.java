@@ -13,6 +13,9 @@ public class Main {
 
         try {
             cart.addProduct(physicalProduct, 2);
+            cart.addProduct(digitalProduct, 2);
+            cart.addProduct(physicalProduct, 1);
+            cart.addProduct(digitalProduct, -5);
             cart.addProduct(digitalProduct, 1);
         } catch (InvalidQuantityException | InsufficientStockException e) {
             System.err.println("Error adding product to cart: " + e.getMessage());

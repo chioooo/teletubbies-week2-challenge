@@ -26,10 +26,10 @@ public abstract class Product {
 
 
     protected Product(String sku, String name, double unitprice, int stock) {
-        if (sku == null || sku.isEmpty()) {
+        if (sku == null || sku.isBlank()) {
             throw new IllegalArgumentException("SKU cannot be null or empty");
         }
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         if (unitprice < 0) {
@@ -89,10 +89,13 @@ public abstract class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product other = (Product) o;
-        return Objects.equals(sku, other.sku);
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Product other)) {
+            return false;
+        }
+        return sku.equals(other.sku);
     }
 
     @Override
